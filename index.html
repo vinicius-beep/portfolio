@@ -16,6 +16,123 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     </head>
+    <script>
+// =============================
+// SISTEMA DE TRADUÇÃO DINÂMICA
+// =============================
+
+// Todas as traduções de TODO o site
+const translations = {
+    en: {
+        // MENU
+        "Sobre": "About",
+        "Experiência": "Experience",
+        "Ensino": "Education",
+        "Habilidades": "Skills",
+        "Idiomas": "Languages",
+        "projetos": "Projects",
+
+        // SOBRE
+        "Sou um jovem apaixonado por TI, com uma sólida base de conhecimentos e uma grande vontade de me aprofundar cada vez mais sobre. Tenho um perfil proativo, adaptável e sempre em busca de novas oportunidades para aprender, crescer e contribuir com soluções. Meu principal foco é a segurança da informação, um campo que venho estudando de forma autodidata, o que me permitiu desenvolver muito meu conhecimento na área.":
+        "I am a young person passionate about IT, with a solid knowledge base and a strong desire to learn more. I am proactive, adaptable, and always seeking opportunities to grow and contribute with solutions. My main focus is cybersecurity, a field I study autonomously, which strengthened my knowledge.",
+
+        // EXPERIÊNCIA
+        "Assistente Administrativo": "Administrative Assistant",
+        "Suporte Técnico": "Technical Support",
+
+        // ENSINO
+        "Ensino Médio": "High School",
+        "Completo": "Completed",
+        "Técnico em informática": "Computer Technician",
+
+        // IDIOMAS
+        "Português:": "Portuguese:",
+        "Nativo,": "Native,",
+        "Inglês:": "English:",
+        "Fluente,": "Fluent,",
+
+        // HABILIDADES
+        "Outras habilidades": "Other skills",
+
+        // PROJETOS
+        "Projetos": "Projects",
+        "Calculadora em C": "Calculator in C",
+        "Calculadora em Java": "Calculator in Java",
+        "Interface com Funções (Java)": "Interface with Functions (Java)",
+        "Contas e Produtos (Java)": "Accounts and Products (Java)"
+    },
+
+    es: {
+        // MENU
+        "Sobre": "Sobre mí",
+        "Experiência": "Experiencia",
+        "Ensino": "Educación",
+        "Habilidades": "Habilidades",
+        "Idiomas": "Idiomas",
+        "projetos": "Proyectos",
+
+        // SOBRE
+        "Sou um jovem apaixonado por TI, com uma sólida base de conhecimentos e uma grande vontade de me aprofundar cada vez mais sobre. Tenho um perfil proativo, adaptável e sempre em busca de novas oportunidades para aprender, crescer e contribuir com soluções. Meu principal foco é a segurança da informação, um campo que venho estudando de forma autodidata, o que me permitiu desenvolver muito meu conhecimento na área.":
+        "Soy un joven apasionado por la TI, con una base sólida de conocimientos y un gran deseo de aprender más. Soy proactivo, adaptable y siempre busco oportunidades para crecer y contribuir con soluciones. Mi enfoque principal es la seguridad de la información, un campo que estudio de manera autodidacta, lo que ha fortalecido mis conocimientos.",
+
+        // EXPERIÊNCIA
+        "Assistente Administrativo": "Asistente Administrativo",
+        "Suporte Técnico": "Soporte Técnico",
+
+        // ENSINO
+        "Ensino Médio": "Educación Secundaria",
+        "Completo": "Completo",
+        "Técnico em informática": "Técnico en Informática",
+
+        // IDIOMAS
+        "Português:": "Portugués:",
+        "Nativo,": "Nativo,",
+        "Inglês:": "Inglés:",
+        "Fluente,": "Fluido,",
+
+        // HABILIDADES
+        "Outras habilidades": "Otras habilidades",
+
+        // PROJETOS
+        "Projetos": "Proyectos",
+        "Calculadora em C": "Calculadora en C",
+        "Calculadora em Java": "Calculadora en Java",
+        "Interface com Funções (Java)": "Interfaz con Funciones (Java)",
+        "Contas e Produtos (Java)": "Cuentas y Productos (Java)"
+    }
+};
+
+// ========================================
+// FUNÇÃO DE TRADUÇÃO (NÃO ALTERA O HTML)
+// ========================================
+function translatePage(lang) {
+    const all = document.querySelectorAll("*");
+
+    all.forEach(el => {
+        let text = el.innerText.trim();
+
+        if (translations[lang] && translations[lang][text]) {
+            el.innerHTML = translations[lang][text];
+        }
+    });
+}
+
+// =============================
+// EVENTO DOS BOTÕES DE BANDEIRA
+// =============================
+document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang");
+
+        if (lang === "pt") {
+            location.reload(); // volta ao original
+        } else {
+            translatePage(lang);
+        }
+    });
+});
+</script>
+
     <body id="page-top">
         <style>
             body {
@@ -32,6 +149,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               
                 <ul class="navbar-nav">
+                    <li class="nav-item mt-4 text-center">
+    <div id="lang-switcher">
+        <button class="btn btn-light btn-sm lang-btn" data-lang="pt">🇧🇷</button>
+        <button class="btn btn-light btn-sm lang-btn" data-lang="en">🇺🇸</button>
+        <button class="btn btn-light btn-sm lang-btn" data-lang="es">🇪🇸</button>
+    </div>
+</li>
                    
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#sobre">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experiência">Experiência</a></li>
