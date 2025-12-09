@@ -11172,6 +11172,17 @@ p.lead {
   #sideNav .navbar-collapse .navbar-nav .-item .nav-link {
     display: block;
   }
+  #sideNav {
+    background: #0000FF;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.02),
+        rgba(0, 0, 0, 0.02) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+}
+
 }
 .social-icons .social-icon {
   display: inline-flex;
