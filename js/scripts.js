@@ -42,8 +42,16 @@ document.querySelectorAll('.projeto-card').forEach(card => {
     });
   });
 
-  const el = document.getElementById('typewriter-nome');
-const texts = ["Vinícius Da Silva", "Estudante de TI", "Desenvolvedor"];
+ const el = document.getElementById('typewriter-nome');
+
+// Detecta automaticamente se está no index (pt) ou ingles.html
+const isEnglish = window.location.pathname.toLowerCase().includes("ingles");
+
+// Textos para cada idioma
+const texts = isEnglish
+    ? ["Vinícius Da Silva", "IT Student", "Developer"]
+    : ["Vinícius Da Silva", "Estudante de TI", "Desenvolvedor"];
+
 let index = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -61,7 +69,7 @@ function type() {
       setTimeout(() => {
         isDeleting = true;
         type();
-      }, 2000); // tempo de pausa após digitar tudo
+      }, 2000);
     }
   } else {
     if (charIndex > 0) {
