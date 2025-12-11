@@ -42,15 +42,23 @@ document.querySelectorAll('.projeto-card').forEach(card => {
     });
   });
 
- const el = document.getElementById('typewriter-nome');
+const el = document.getElementById('typewriter-nome');
 
-// Detecta automaticamente se está no index (pt) ou ingles.html
-const isEnglish = window.location.pathname.toLowerCase().includes("ingles");
+// Detecta automaticamente se está no index (pt), ingles.html ou espanhol.html
+const pathname = window.location.pathname.toLowerCase();
+const isEnglish = pathname.includes("ingles.html");
+const isSpanish = pathname.includes("espanhol.html");
 
 // Textos para cada idioma
-const texts = isEnglish
-    ? ["Vinícius Da Silva", "IT Student", "Developer"]
-    : ["Vinícius Da Silva", "Estudante de TI", "Desenvolvedor"];
+let texts = ["Vinícius Da Silva", "Estudante de TI", "Desenvolvedor"];
+
+if (isEnglish) {
+    texts = ["Vinícius Da Silva", "IT Student", "Developer"];
+} else if (isSpanish) {
+    // Textos em espanhol
+    texts = ["Vinícius Da Silva", "Estudiante de TI", "Desarrollador"];
+}
+
 
 let index = 0;
 let charIndex = 0;
@@ -84,4 +92,3 @@ function type() {
 }
 
 type();
-
